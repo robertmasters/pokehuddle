@@ -1,38 +1,188 @@
-.App {
-  text-align: center;
+/* class name parent child relationships
+
+ main-container
+    header
+        banner img tag
+    middle-section
+        ashPika img tag
+        
+
+        login-section
+            description p tag
+            Form
+                login-notamember
+                h2
+                input-container
+                    input
+                    input
+                    input
+                    Button
+                     */
+
+html {
+margin: 0 auto;
+width: 80%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.bannerimg {
+    margin-top: 10px;
+    width: 80%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.middle-section {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.ashpikaimg {
+    width: 80%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    justify-content: space-around;    
+}
+
+.login-flex-item {
+    margin: 10px;
+}
+
+.description {
+    width: 500px;
+    font-size: 25px;
+    font-weight: 550;
+    color: #2d537c;
+    line-height: 25px;
+    text-shadow: #2d537c 0px 0px 1px;
+}
+.registration-prompt {
+    font-size: 25px;
+    font-weight: 550;
+}
+
+.selection{
+    font-size: 13px;    
+    color: #525252;
+    font-weight: bold;
+}
+
+.select-logreg {
+    /* text-decoration: none; */ /*hides underline*/
+    color: #686666;
+    font-weight: bold;
+}
+
+.select-logreg:hover{
+    color: #b1a82e;
+}
+
+Link:focus-visible{
+    box-shadow: #4378b1 0px 0px 3px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-item {
+    margin: 2px;
+    width: 80%;
+    font-size: 15px;
+}
+
+input {
+    border: 1px solid rgb(163, 163, 163);
+    border-radius: 9px;
+    padding: 3px;
+    color:#2d537c;
+}
+
+input:focus-visible {
+    outline: 0px;
+    background-color: #b1a82e;
+}
+
+.btn {
+    width: 85%;
+    color: #2d537c;
+    background-color: #f3e73d;
+    border: 0px solid #333;
+    border-radius: 9px;
+    padding: 3px;
+}
+
+.btn:active {
+    outline: 9px;
+    background-color: #333;
+}
+
+.btn:hover{
+    background-color: #4378b1;
+    color: #f3e73d;
+    box-shadow: #4378b1 0px 0px 3px;
+}
+
+.btn:focus-visible{
+    outline: 0px;
+    background-color: #4378b1;
+    color: #f3e73d;
+    box-shadow: #4378b1 0px 0px 3px;
+}
+
+.btn:active{
+    color: #fff537;
+    background-color: #2d537c;
+}
+
+@media (max-width: 1200px) {
+
+    .description {
+        width: 300px;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .description {
+        width: 200px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 570px) {
+
+    .main-container{
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .bannerimg {
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .ashpikaimg {
+        display: none;
+    }
+    
+    .description {
+        width: 60%;
+        font-size: 15px;
+        margin: 0 auto;
+    }
 }
