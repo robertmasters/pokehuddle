@@ -6,17 +6,18 @@ import Login from './components/LoginRegister/Login';
 import Register from './components/LoginRegister/Register';
 import PageNotFound from './components/Pages/PageNotFound';
 
-function AppRoutes() {
+function RoutesApp() {
 	return (
+		
 		//<PrivateRoute exact path = '/dashboard' component = {Dashboard}></PrivateRoute> 
 		// <Route path = '/dashboard' component = {Dashboard} />
 		<Routes>
-			<Route exact path = '/' component = {<Login/>} />
+			<Route exact path = '/' element = {<Login/>} />
 			
-			<Route path = '/register' component = {<Register/>} /> 
-			<Route component = {<PageNotFound/>} /> 
+			<Route path = '/register' element = {<Register/>} /> 
+			<Route element = {<PageNotFound/>} /> 
 		</Routes>
 	)
 };
 
-export default AppRoutes; 
+export default RoutesApp; 
