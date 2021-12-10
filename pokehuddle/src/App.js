@@ -1,7 +1,7 @@
 import './App.css';
 import {BrowserRouter as Router} from 'react-router-dom'
 import Header from './components/LoginRegister/Header';
-import AppRoutes from './AppRoutes';
+import RoutesApp from './RoutesApp';
 
 function App() {
     return (
@@ -9,7 +9,7 @@ function App() {
             <div data-testid="app" className="main-container">
                 <div className="Route-container">
                     <Header />
-                    <AppRoutes />
+                    <RoutesApp />
                     <a target="_blank" className = "link" rel="noreferrer" href="https://github.com/robertmasters/pokehuddle/blob/main/Application_build_plan.md">Github  </a>with roadmap for app
                 </div>
             </div>
