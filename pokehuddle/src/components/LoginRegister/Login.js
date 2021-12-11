@@ -40,21 +40,21 @@ function Login() {
 	}
 
 	return (
-		<div className = "main-container">
-			<div>User auth not set up <Link className = "link" to ='/dashboard/research'>click here </Link>to enter app</div>
+		<div className = 'main-container'>
+			<div>User auth not set up <Link className = 'link' to ='/dashboard/research'>click here </Link>to enter app</div>
 
-			<div className = "middle-section">
-				<div className = "ashPikaimg-container">
-					<img className ="ashpikaimg" src = {require('../../images/ashpika.png').default} alt = 'Ash and Pikachu landing page' />
+			<div className = 'middle-section'>
+				<div className = 'ashPikaimg-container'>
+					<img className ='ashpikaimg' src = {require('../../images/ashpika.png').default} alt = 'Ash and Pikachu landing page' />
 				</div>
 
-				<div className= "login-section">
+				<div className= 'login-section'>
 
-					<div className = "description login-flex-item">
+					<div className = 'description login-flex-item'>
 					PokeHuddle is a personal space for you to research Pokemon, favorite them, view leaderboards, view other members fan art, and upload your own!
 					</div>
 
-					<div className = "selection  login-flex-item">
+					<div className = 'selection  login-flex-item'>
 					<Link to ='/register' className = 'select-logreg'>Not a Member?</Link>
 					</div>
 
@@ -63,17 +63,19 @@ function Login() {
 							type = 'text'
 							name = 'username'
 							placeholder = "Username"
+							data-testid='username-input'
 							value = {state.credentials.username}
 							onChange ={handleChange}
 						/>
 						<input className = 'form-item'
-							type="password"
-							name="password"
-							placeholder = "Password"
+							type='password'
+							name='password'
+							placeholder = 'Password'
+							data-testid='password-input'
 							value={state.credentials.password}
 							onChange={handleChange}
 						/>
-						<button data-testid = "login-btn" className = 'form-item btn'>Log in</button>
+						<button data-testid = 'login-btn' className = 'form-item btn'>Log in</button>
 					</form>
 				</div>
 			</div>
