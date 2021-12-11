@@ -12,7 +12,7 @@ function RoutesApp() {
 		//<PrivateRoute exact path = '/dashboard' component = {Dashboard}></PrivateRoute> 
 		// <Route path = '/dashboard' component = {Dashboard} />
 		<Routes>
-			<Route exact path = '/' element = {<Login/>} />
+			<Route path = '/' element = {<Login/>} />
 			
 			<Route path = '/register' element = {<Register/>} /> 
 			<Route element = {<PageNotFound/>} /> 

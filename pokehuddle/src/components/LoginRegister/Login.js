@@ -41,7 +41,7 @@ function Login() {
 
 	return (
 		<div className = "main-container">
-			{/*<div>User auth not set up<Link className = "link" to ='/dashboard/research'>click here </Link>to enter app</div>*/}
+			<div>User auth not set up <Link className = "link" to ='/dashboard/research'>click here </Link>to enter app</div>
 
 			<div className = "middle-section">
 				<div className = "ashPikaimg-container">
@@ -55,7 +55,7 @@ function Login() {
 					</div>
 
 					<div className = "selection  login-flex-item">
-					{/*<Link to ='/register' className = 'select-logreg'>Not a Member?</Link>*/}
+					<Link to ='/register' className = 'select-logreg'>Not a Member?</Link>
 					</div>
 
 					<form className = 'login-flex-item' onSubmit = {login}>
