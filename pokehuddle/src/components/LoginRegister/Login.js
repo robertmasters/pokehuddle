@@ -13,7 +13,7 @@ const initialState = {
 
 function Login() {
 	const [state, setState] = useState(initialState)
-	// const navigate = useNavigate()
+	const navigate = useNavigate()
 
 	function handleChange(e) {
 		setState({
@@ -34,7 +34,7 @@ function Login() {
 			//store token in local storage
 			//navigate to the dashboard after successfull login
 			window.localStorage.setItem('token', JSON.stringify(res.data.payload)) // JSON. stringify ensures that token is a string, only downside is that it has to be parsed when its accessed / also used window.localStorage instead of just localStorage, as some browsers dont recognize localStorage as a global variable, so using window. is a safe option
-			// navigate.push('/dashboard')
+			navigate.push('/dashboard')
 		})
 		.catch((err)=> console.log(err))
 	}

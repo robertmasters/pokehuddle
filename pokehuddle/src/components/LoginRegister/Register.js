@@ -12,10 +12,10 @@ const initialState = {
 
 function Register() {
     const [state, setState] = useState(initialState)
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     function goToLogin () {
-        // navigate.push('/')
+        navigate.push('/')
     }
 
 function handleChange(e) {
@@ -28,7 +28,7 @@ function handleChange(e) {
    }
     return (
         <div className = "main-container">
-            {/* <div>User auth not set up<Link className = "link" to ='/dashboard/research'>click here </Link>to enter app</div> */}
+            <div>User auth not set up<Link className = "link" to ='/dashboard/research'>click here </Link>to enter app</div>
             
             <div className = "middle-section">
                 <div className = "ashPikaimg-container">
@@ -44,7 +44,7 @@ function handleChange(e) {
                 
                     <div className = "selection login-flex-item">
                         Already a member? &nbsp;
-                        {/* <Link to ='/' className = 'select-logreg'>Login</Link> */}
+                        <Link to ='/' className = 'select-logreg'>Login</Link>
                     </div>
 
                     <form className = 'login-flex-item' onSubmit = {goToLogin}>
