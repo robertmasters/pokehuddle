@@ -1,7 +1,8 @@
-import { fireEvent, render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Login from './Login';
 import userEvent from '@testing-library/user-event';
+
 describe('Test Login form', ()=> {
 	test('renders login without crashing', () => {
 		render(
@@ -21,7 +22,6 @@ describe('Test Login form', ()=> {
 			
 			expect(usernameInput).toBeInTheDocument()
 			expect(usernameInput).toHaveAttribute('type', 'text')
-
 	})
 
 	test('user can enter username',  () =>{
@@ -48,7 +48,6 @@ describe('Test Login form', ()=> {
 			
 			expect(passwordInput).toBeInTheDocument()
 			expect(passwordInput).toHaveAttribute('type', 'password')
-
 	})
 
 	test('user can enter password',  () =>{
