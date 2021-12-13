@@ -58,6 +58,12 @@ describe('Test Login form', ()=> {
 		expect(await screen.findAllByRole("alert")).toHaveLength(1);
 		expect(mockLogin).not.toBeCalled();
 	})
+	test('user cannot leave any field empty', async () => {
+		fireEvent.submit(screen.getByRole('button'))
+
+		expect(await screen.findAllByRole("alert")).toHaveLength(2);
+		expect(mockLogin).not.toBeCalled();
+	})
 	
 })
 
