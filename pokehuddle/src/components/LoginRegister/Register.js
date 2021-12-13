@@ -1,34 +1,30 @@
 import React from 'react'
-import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-const initialState = {
-    credentials: {
-    name: '',
-    username: '',
-    password: ''
-  }
-}
+import { useForm } from "react-hook-form"
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 function Register() {
-    const [state, setState] = useState(initialState)
+    const { register, formState: {errors}, handleSubmit } = useForm({
+		mode: 'onBlur'
+	})
     const navigate = useNavigate()
 
-    function goToLogin () {
-        navigate.push('/')
+    function goToLogin (data) {
+        console.log(data)
+        axiosWithAuth()
+		.post('/api/register', data)
+		.then((res) => {
+			//store token in local storage
+			//navigate to the dashboard after successfull login
+			window.localStorage.setItem('token', JSON.stringify(res.data.payload)) // JSON. stringify ensures that token is a string, only downside is that it has to be parsed when its accessed / also used window.localStorage instead of just localStorage, as some browsers dont recognize localStorage as a global variable, so using window. is a safe option
+			navigate.push('/')
+		})
+		.catch((err)=> console.log(err))
     }
 
-function handleChange(e) {
-    setState({
-        credentials: {
-            ...state.credentials,
-            [e.target.name]: e.target.value
-        }
-    })
-   }
     return (
         <div className = "main-container">
-            <div>User auth not set up<Link className = "link" to ='/dashboard/research'>click here </Link>to enter app</div>
+            <div>User auth not set up <Link className = "link" to ='/dashboard/research'>click here </Link>to enter app</div>
             
             <div className = "middle-section">
                 <div className = "ashPikaimg-container">
@@ -47,29 +43,38 @@ function handleChange(e) {
                         <Link to ='/' className = 'select-logreg'>Login</Link>
                     </div>
 
-                    <form className = 'login-flex-item' onSubmit = {goToLogin}>
+                    <form className = 'login-flex-item' onSubmit = {handleSubmit(goToLogin)}>
                 
                         <input className = 'form-item'
                             type = 'text'
                             name = 'name'
                             placeholder = "Enter Name"
-                            value = {state.credentials.name}
-                            onChange ={handleChange}
+                            {...register('name', { required: true })}
                         />
+                        {errors.name && (
+							<p 
+							role = 'alert' className='error-message'>Looks like there was an error: Name is {errors.name.type}</p>
+						)}
                         <input className = 'form-item'
                             type = 'text'
                             name = 'username'
                             placeholder = "Username"
-                            value = {state.credentials.username}
-                            onChange ={handleChange}
+                            {...register('username', { required: true })}
                         />
+                        {errors.username && (
+							<p 
+							role = 'alert' className='error-message'>Looks like there was an error: Username is {errors.username.type}</p>
+						)}
                         <input className = 'form-item'
                             type="password"
                             name="password"
                             placeholder = "Password"
-                            value={state.credentials.password}
-                            onChange={handleChange}
+                            {...register('password', { required: true })}
                         />
+                        {errors.password && (
+							<p 
+							role = 'alert' className='error-message'>Looks like there was an error: Password is {errors.password.type}</p>
+						)}
                         <button className = 'form-item btn'>Sign Up</button>
                     </form>
                 </div>
