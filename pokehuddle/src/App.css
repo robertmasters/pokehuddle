@@ -34,7 +34,8 @@ width: 80%;
 
 .bannerimg {
     margin-top: 10px;
-    width: 80%;
+    margin: auto;
+    width: 60%;
 }
 
 .middle-section {
@@ -89,6 +90,15 @@ width: 80%;
     color: #b1a82e;
 }
 
+.link {
+    margin-left: 5px;
+    margin-bottom: 10px;
+    text-decoration: none; 
+    color: #447fbd;
+    font-weight: bold;
+    text-align: left;
+}
+
 Link:focus-visible{
     box-shadow: #4378b1 0px 0px 3px;
 }
@@ -110,11 +120,15 @@ input {
     border-radius: 9px;
     padding: 3px;
     color:#2d537c;
+
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #7dbcff;
 }
 
 input:focus-visible {
     outline: 0px;
-    background-color: #b1a82e;
+    background-color: #d7ebff;
 }
 
 .btn {
@@ -146,7 +160,12 @@ input:focus-visible {
 
 .btn:active{
     color: #fff537;
-    background-color: #2d537c;
+    background-color: hsl(211, 47%, 33%);
+}
+
+.error-message{
+    color: red;
+    font-size: 12px;
 }
 
 @media (max-width: 1200px) {
