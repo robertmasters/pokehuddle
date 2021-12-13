@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { useForm } from "react-hook-form"
 import '../../App.css'
 
 const initialState = {
@@ -13,6 +14,9 @@ const initialState = {
 
 function Login() {
 	const [state, setState] = useState(initialState)
+	const { register, formState: {errors}} = useForm({
+		mode: 'onBlur'
+	})
 	const navigate = useNavigate()
 
 	function handleChange(e) {
@@ -64,9 +68,12 @@ function Login() {
 							name = 'username'
 							placeholder = "Username"
 							data-testid='username-input'
-							value = {state.credentials.username}
 							onChange ={handleChange}
+							{...register('username', { required: true })}
 						/>
+						{errors.username && (
+							<p className='error-message'>Looks like there was an error: {errors.username.type}</p>
+						)}
 						<input className = 'form-item'
 							type='password'
 							name='password'
