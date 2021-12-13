@@ -1,23 +1,20 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Login from './Login';
 import userEvent from '@testing-library/user-event';
 
+const mockLogin = jest.fn((email, password) => {
+	return Promise.resolve({ email, password });
+  });
 describe('Test Login form', ()=> {
-	test('renders login without crashing', () => {
+	beforeEach(() => {
 		render(
-			<MemoryRouter>
-				<Login />
+			<MemoryRouter><Login login={mockLogin} />
 			</MemoryRouter>
 			);
-	});
+	  });
+	test('renders login without crashing', () => {});
 	test('render username input',  () =>{
-		render(
-			<MemoryRouter>
-				<Login />
-			</MemoryRouter>
-			)
-
 			const usernameInput = screen.getByTestId("username-input")
 			
 			expect(usernameInput).toBeInTheDocument()
@@ -25,12 +22,6 @@ describe('Test Login form', ()=> {
 	})
 
 	test('user can enter username',  () =>{
-		render(
-			<MemoryRouter>
-				<Login />
-			</MemoryRouter>
-			)
-
 			const usernameInput = screen.getByTestId("username-input")
 			userEvent.type(usernameInput, 'usernametest')
 			
@@ -38,12 +29,6 @@ describe('Test Login form', ()=> {
 	})
 
 	test('render passowrd input',  () =>{
-		render(
-			<MemoryRouter>
-				<Login />
-			</MemoryRouter>
-			)
-
 			const passwordInput = screen.getByTestId("password-input")
 			
 			expect(passwordInput).toBeInTheDocument()
@@ -51,16 +36,28 @@ describe('Test Login form', ()=> {
 	})
 
 	test('user can enter password',  () =>{
-		render(
-			<MemoryRouter>
-				<Login />
-			</MemoryRouter>
-			)
-
 			const passwordInput = screen.getByTestId("password-input")
 			userEvent.type(passwordInput, 'passwordtest')
 			
 			expect(screen.getByTestId('password-input').value).toHaveLength(12)
 	})
+	test('user cannot leave username empty', async () => {
+		const passwordInput = screen.getByTestId("password-input")
+			userEvent.type(passwordInput, 'passwordtest')
+		fireEvent.submit(screen.getByRole('button'))
+
+		expect(await screen.findAllByRole("alert")).toHaveLength(1);
+		expect(mockLogin).not.toBeCalled();
+	})
+	
+	test('user cannot leave password empty', async () => {
+		const usernameInput = screen.getByTestId("username-input")
+		userEvent.type(usernameInput, 'usernametest')
+		fireEvent.submit(screen.getByRole('button'))
+
+		expect(await screen.findAllByRole("alert")).toHaveLength(1);
+		expect(mockLogin).not.toBeCalled();
+	})
+	
 })
 

@@ -1,39 +1,20 @@
 import React from 'react'
-import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { useForm } from "react-hook-form"
 import '../../App.css'
 
-const initialState = {
-	credentials: {
-		username: '',
-		password: ''
-	}
-}
-
 function Login() {
-	const [state, setState] = useState(initialState)
-	const { register, formState: {errors}} = useForm({
+	const { register, formState: {errors}, handleSubmit } = useForm({
 		mode: 'onBlur'
 	})
 	const navigate = useNavigate()
 
-	function handleChange(e) {
-		setState({
-			credentials: {
-				...state.credentials,
-				[e.target.name]: e.target.value
-			}
-		})
-	}
-
-	function login(e) {
-		e.preventDefault();
-
+	function login(data) {
+		console.log(data)
 		//make a post request with username and password(state.credentials) as the data body
 		axiosWithAuth()
-		.post('/api/login', state.credentials)
+		.post('/api/login', data)
 		.then((res) => {
 			//store token in local storage
 			//navigate to the dashboard after successfull login
@@ -45,14 +26,14 @@ function Login() {
 
 	return (
 		<div className = 'main-container'>
-			<div>User auth not set up <Link className = 'link' to ='/dashboard/research'>click here </Link>to enter app</div>
+			<div>User auth not set up<Link className = 'link' to ='/dashboard/research'>click here </Link>to enter app</div>
 
 			<div className = 'middle-section'>
 				<div className = 'ashPikaimg-container'>
 					<img className ='ashpikaimg' src = {require('../../images/ashpika.png').default} alt = 'Ash and Pikachu landing page' />
 				</div>
 
-				<div className= 'login-section'>
+				<div data-testid = 'login-section' className= 'login-section'>
 
 					<div className = 'description login-flex-item'>
 					PokeHuddle is a personal space for you to research Pokemon, favorite them, view leaderboards, view other members fan art, and upload your own!
@@ -62,27 +43,31 @@ function Login() {
 					<Link to ='/register' className = 'select-logreg'>Not a Member?</Link>
 					</div>
 
-					<form className = 'login-flex-item' onSubmit = {login}>
+					<form className = 'login-flex-item' onSubmit = {handleSubmit(login)}>
 						<input className = 'form-item'
 							type = 'text'
 							name = 'username'
 							placeholder = "Username"
 							data-testid='username-input'
-							onChange ={handleChange}
 							{...register('username', { required: true })}
 						/>
 						{errors.username && (
-							<p className='error-message'>Looks like there was an error: {errors.username.type}</p>
+							<p 
+							role = 'alert' className='error-message'>Looks like there was an error: Username is {errors.username.type}</p>
 						)}
 						<input className = 'form-item'
 							type='password'
 							name='password'
 							placeholder = 'Password'
 							data-testid='password-input'
-							value={state.credentials.password}
-							onChange={handleChange}
+							{...register('password', { required: true })}
 						/>
-						<button data-testid = 'login-btn' className = 'form-item btn'>Log in</button>
+						{errors.password && (
+							<p 
+							role = 'alert' className='error-message'>Looks like there was an error: Password is {errors.password.type}</p>
+						)}
+						<button
+						 data-testid = 'login-btn' className = 'form-item btn'>Log in</button>
 					</form>
 				</div>
 			</div>
