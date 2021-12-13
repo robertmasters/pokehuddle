@@ -49,6 +49,7 @@ function Register() {
                             type = 'text'
                             name = 'name'
                             placeholder = "Enter Name"
+                            data-testid='name-input'
                             {...register('name', { required: true })}
                         />
                         {errors.name && (
@@ -59,6 +60,7 @@ function Register() {
                             type = 'text'
                             name = 'username'
                             placeholder = "Username"
+                            data-testid='username-input'
                             {...register('username', { required: true })}
                         />
                         {errors.username && (
@@ -69,6 +71,7 @@ function Register() {
                             type="password"
                             name="password"
                             placeholder = "Password"
+                            data-testid='password-input'
                             {...register('password', { required: true })}
                         />
                         {errors.password && (

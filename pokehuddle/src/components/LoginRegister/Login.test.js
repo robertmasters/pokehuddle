@@ -3,8 +3,8 @@ import { MemoryRouter } from 'react-router-dom';
 import Login from './Login';
 import userEvent from '@testing-library/user-event';
 
-const mockLogin = jest.fn((email, password) => {
-	return Promise.resolve({ email, password });
+const mockLogin = jest.fn((username, password) => {
+	return Promise.resolve({ username, password });
   });
 describe('Test Login form', ()=> {
 	beforeEach(() => {

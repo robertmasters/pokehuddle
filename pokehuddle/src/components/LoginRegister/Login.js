@@ -66,8 +66,7 @@ function Login() {
 							<p 
 							role = 'alert' className='error-message'>Looks like there was an error: Password is {errors.password.type}</p>
 						)}
-						<button
-						 data-testid = 'login-btn' className = 'form-item btn'>Log in</button>
+						<button className = 'form-item btn'>Log in</button>
 					</form>
 				</div>
 			</div>
