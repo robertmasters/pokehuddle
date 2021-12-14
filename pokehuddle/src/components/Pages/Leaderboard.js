@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Leaderboards() {
+export default function Leaderboard() {
     return (
         <div className = "component-container">
-            Leaderboards
-        </div>
+            Leaderboard
+        </div> 
     )
 }
