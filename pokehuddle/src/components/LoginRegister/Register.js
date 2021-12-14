@@ -78,7 +78,7 @@ function Register() {
 							<p 
 							role = 'alert' className='error-message'>Looks like there was an error: Password is {errors.password.type}</p>
 						)}
-                        <button className = 'form-item btn'>Sign Up</button>
+                        <button className = 'form-item btn'>Register</button>
                     </form>
                 </div>
             </div>
