@@ -9,11 +9,9 @@ import Photos from '../Pages/Photos';
 import Research from '../Pages/Research';
 
 export default function DashboardRoutes() {
-    // const match = useMatch()
-
 	return (
 			<Routes>
-				<Route path = 'home' element = {<Home />} />
+				<Route path = '/' element = {<Home />} />
 				<Route path = 'research' element = {<Research />} />
 				<Route path = 'favoritepokemon' element = {<FavoritePokemon />} />
 				<Route path = 'leaderboard' element = {<Leaderboard />} />

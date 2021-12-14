@@ -1,9 +1,8 @@
 import React from 'react'
-import {Link, useMatch} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './SideBar.css'
 
 function SideBar() {
-    // const {path} = useMatch()
 
     const logout = () => {
         //also send a request to /api/logout once api is set up
@@ -18,7 +17,7 @@ function SideBar() {
                     <img className ="avatar-img" src = {require('../../images/Avatars/mewtwoAvatar.png').default} alt = 'Avatar' />
                 </div>
                 <div className = "links-container">
-                    <Link className = "link" to = 'home' >Home</Link>
+                    <Link className = "link" to = '/' >Home</Link>
                     <Link className = "link" to = 'research' >Research</Link>
                     <Link className = "link" to = 'favoritepokemon' >Favorite Pokemon</Link>
                     <Link className = "link" to = 'leaderboard' >Leaderboard</Link>

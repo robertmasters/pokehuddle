@@ -13,10 +13,10 @@ function RoutesApp() {
 		<Routes>
 			<Route path = '/' element = {<Login/>} />
 			<Route path = '/dashboard/*' element = {<Dashboard />} />
-			<Route path = '/register' element = {<Register/>} /> 
-			<Route path = '*' element = {<PageNotFound/>} /> 
+			<Route path = '/register' element = {<Register/>} />
+			<Route path = '*' element = {<PageNotFound/>} />
 		</Routes>
 	)
 };
 
-export default RoutesApp; 
+export default RoutesApp;
