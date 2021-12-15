@@ -10,6 +10,7 @@ describe('Test Dashboard', () => {
 			</MemoryRouter>
 			);
 	})
+
 	test('renders dashboard', () => {
 		const appElement = screen.getByTestId('dashboard');
 		expect(appElement).toBeInTheDocument();
@@ -19,7 +20,7 @@ describe('Test Dashboard', () => {
 		expect(appElement).toBeInTheDocument();
 	});
 	test('renders home component as default route', () => {
-		const appElement = screen.getByTestId('home-component');
+		const appElement = screen.getByTestId('home');
 		expect(appElement).toBeInTheDocument();
 	});
 });

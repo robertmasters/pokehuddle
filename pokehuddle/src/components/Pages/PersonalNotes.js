@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function PersonalNotes() {
     return (
-        <div className = "component-container">
+        <div data-testid = "personalnotes" className = "component-container">
             PersonalNotes
         </div>
     )

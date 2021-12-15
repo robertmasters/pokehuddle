@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Photos() {
     return (
-        <div className = "component-container">
+        <div data-testid = "photos" className = "component-container">
             Photos 
         </div>
     )

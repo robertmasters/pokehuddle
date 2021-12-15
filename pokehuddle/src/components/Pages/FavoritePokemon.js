@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function FavoritePokemon() {
     return (
-        <div className = "component-container">
+        <div data-testid = "favoritepokemon" className = "component-container">
             FavoritePokemon
         </div>
     )

@@ -17,7 +17,7 @@ function SideBar() {
                     <img className ="avatar-img" src = {require('../../images/Avatars/mewtwoAvatar.png').default} alt = 'Avatar' />
                 </div>
                 <div className = "links-container">
-                    <Link className = "link" to = '/' >Home</Link>
+                    <Link className = "link" to = '' >Home</Link>
                     <Link className = "link" to = 'research' >Research</Link>
                     <Link className = "link" to = 'favoritepokemon' >Favorite Pokemon</Link>
                     <Link className = "link" to = 'leaderboard' >Leaderboard</Link>

@@ -5,7 +5,7 @@ export default function Home() {
     return (
         <div>
             <h1>Welcome!</h1>
-            <div data-testid = "home-component" className = "home-container">
+            <div data-testid = "home" className = "home-container">
                 <div className = "favorite-notification-container">
                     <div>
                         <img className ="favoritestextimg" src = {require('../../images/favoritestext.png').default} alt = 'favorites' />
