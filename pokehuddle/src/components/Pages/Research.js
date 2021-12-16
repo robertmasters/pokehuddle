@@ -61,9 +61,9 @@ export default function Research() {
         
             {pokemon !== '' ?
                 <div className = 'pokemon-details-container'>
-                    <h1 className = "pokemon-name">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1> {/*name comes in all lower case, this function allows me to uppercase the first letter of the string */}
-                    <h2>No. {pokemon.id}</h2>
-                    <div className = 'sprites'>   
+                    <div className = "pokemon-name">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</div> {/*name comes in all lower case, this function allows me to uppercase the first letter of the string */}
+                    <div>No. {pokemon.id}</div>
+                    <div className = 'image'>   
                         <img className ="pokemon-image" src={pokemon.sprites.other["official-artwork"].front_default} alt = 'pokemon'/>
                     </div>
                     <div className = 'pokemon-metrics'>

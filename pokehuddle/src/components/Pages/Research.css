@@ -11,12 +11,12 @@
     width: 180px;
 }
 
-h1 {
+.pokemon-name {
     font-size: 50px;
     margin: 0px;
 }
 
-h2 {
+.pokemon-image {
     margin: 0px;
 }
 
