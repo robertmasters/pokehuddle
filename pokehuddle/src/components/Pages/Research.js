@@ -55,13 +55,16 @@ export default function Research() {
                     value = {searchName.pokemon.pokename}
                     onChange ={handleChange}
                 />
-                <button onClick = {getData} className = "search-btn">Search</button>
+                <button 
+                data-testid = 'search-btn'
+                onClick = {getData} 
+                className = "search-btn">Search</button>
             </div>
             <div></div>
         
             {pokemon !== '' ?
                 <div className = 'pokemon-details-container'>
-                    <div className = "pokemon-name">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</div> {/*name comes in all lower case, this function allows me to uppercase the first letter of the string */}
+                    <div data-testid="name" className = "pokemon-name">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</div> {/*name comes in all lower case, this function allows me to uppercase the first letter of the string */}
                     <div>No. {pokemon.id}</div>
                     <div className = 'image'>   
                         <img className ="pokemon-image" src={pokemon.sprites.other["official-artwork"].front_default} alt = 'pokemon'/>

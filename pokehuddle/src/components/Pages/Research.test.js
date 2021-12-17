@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router';
 import Research from './Research';
 
@@ -7,6 +8,14 @@ describe('Test Dashboard', () => {
 		render(
 				<Research />
 		)
+	});
+	test('user can type a pokemon name on the search bar', () => {
+		render(
+				<Research />
+		)
+		const pokemonInput = screen.getByPlaceholderText('Pokemon name')
+		userEvent.type(pokemonInput, 'mew')
+		expect(screen.getByPlaceholderText('Pokemon name')).toHaveValue('mew')
 	});
 	test('Pikachu shows as default pokemon on initial render', async () => {
 		render(
@@ -19,8 +28,16 @@ describe('Test Dashboard', () => {
 		render(
 				<Research />
 		)
-		const pokemonName = await screen.findByText('Pikachu')
-		expect(pokemonName).toBeInTheDocument()
+		const pokemonInput = screen.getByPlaceholderText('Pokemon name')
+		const searchButton = screen.getByTestId('search-btn')
+
+		userEvent.type(pokemonInput, 'Mew')
+		fireEvent.click(searchButton)
+
+		const newPokemon = await screen.findByTestId('name')
+
+		expect(newPokemon).toHaveValue('Mew')
+
 	});
 	
 })
