@@ -29,7 +29,7 @@ describe('Test Dashboard', () => {
 		const researchLink = screen.getByText('Research')
 		const favoritepokemonLink = screen.getByText('Favorite Pokemon')
 		const leaderboardLink = screen.getByText('Leaderboard')
-		const personalnotesLink = screen.getByText('Personal Notes')
+		const articlesLink = screen.getByText('Articles')
 		const photosLink = screen.getByText('Photos')
 		const logoutLink = screen.getByText('Logout')
 
@@ -37,7 +37,7 @@ describe('Test Dashboard', () => {
 		expect(researchLink).toBeInTheDocument()
 		expect(favoritepokemonLink).toBeInTheDocument()
 		expect(leaderboardLink).toBeInTheDocument()
-		expect(personalnotesLink).toBeInTheDocument()
+		expect(articlesLink).toBeInTheDocument()
 		expect(photosLink).toBeInTheDocument()
 		expect(logoutLink).toBeInTheDocument()
 	});

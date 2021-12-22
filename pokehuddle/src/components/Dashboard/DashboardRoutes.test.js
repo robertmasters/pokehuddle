@@ -49,11 +49,11 @@ describe('Test Login form', ()=> {
 
 	test("personalnotes route, routes to personalnotes component", () => {
 		render(
-			<MemoryRouter initialEntries={['/personalnotes']}>
+			<MemoryRouter initialEntries={['/articles']}>
 				<DashboardRoutes />
 			</MemoryRouter>
 			);
-		expect(screen.getByTestId('personalnotes')).toBeInTheDocument();
+		expect(screen.getByTestId('articles')).toBeInTheDocument();
 	})
 
 	test("photos route, routes to photos component", () => {

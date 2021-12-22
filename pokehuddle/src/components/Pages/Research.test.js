@@ -24,20 +24,5 @@ describe('Test Dashboard', () => {
 		const pokemonName = await screen.findByText('Pikachu')
 		expect(pokemonName).toBeInTheDocument()
 	});
-	test('user can search for a different pokemon(mew)', async () => {
-		render(
-				<Research />
-		)
-		const pokemonInput = screen.getByPlaceholderText('Pokemon name')
-		const searchButton = screen.getByTestId('search-btn')
-
-		userEvent.type(pokemonInput, 'Mew')
-		fireEvent.click(searchButton)
-
-		const newPokemon = await screen.findByTestId('name')
-
-		expect(newPokemon).toHaveValue('Mew')
-
-	});
 	
 })

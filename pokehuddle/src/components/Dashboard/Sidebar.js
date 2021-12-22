@@ -21,7 +21,7 @@ function SideBar() {
                     <Link className = "link" to = 'research' >Research</Link>
                     <Link className = "link" to = 'favoritepokemon' >Favorite Pokemon</Link>
                     <Link className = "link" to = 'leaderboard' >Leaderboard</Link>
-                    <Link className = "link" to = 'personalnotes' >Personal Notes</Link>
+                    <Link className = "link" to = 'articles' >Articles</Link>
                     <Link className = "link" to = 'photos' >Photos</Link>
                     <Link className = "link" onClick={logout} to ='/'>Logout</Link>
                 </div>
