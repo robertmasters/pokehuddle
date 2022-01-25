@@ -1,5 +1,5 @@
 import React from 'react';
-import SideBar from './SideBar'
+import SideBar from './SideBar' 
 import './Dashboard.css'
 import DashboardRoutes from './DashboardRoutes';
 
