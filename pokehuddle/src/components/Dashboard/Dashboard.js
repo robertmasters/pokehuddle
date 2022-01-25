@@ -1,6 +1,6 @@
 import React from 'react';
 import SideBar from './SideBar' 
-import './Dashboard.css'
+import './Dashboard.css' 
 import DashboardRoutes from './DashboardRoutes';
 
 function Dashboard() {
