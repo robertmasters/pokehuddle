@@ -6,7 +6,7 @@ import Home from '../Pages/Home';
 import Leaderboard from '../Pages/Leaderboard';
 import PageNotFound from '../Pages/PageNotFound';
 import Photos from '../Pages/Photos';
-import Research from '../Pages/Research';
+import Research from '../Pages/Research'; 
 
 export default function DashboardRoutes() {
 	return (
