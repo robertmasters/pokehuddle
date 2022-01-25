@@ -1,19 +1,19 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-import SideBar from './Dashboard';
+import NavigationBar from './NavigationBar';
 
 describe('Test Dashboard', () => {
 	test('renders component without crashing', () => {
 		render(
 			<MemoryRouter>
-				<SideBar />
+				<NavigationBar />
 			</MemoryRouter>
 		)
 	});
 	test('renders avatar', () => {
 		render(
 			<MemoryRouter>
-				<SideBar />
+				<NavigationBar />
 			</MemoryRouter>
 		)
 		const avatarImg = screen.getByAltText('Avatar')
@@ -22,7 +22,7 @@ describe('Test Dashboard', () => {
 	test('renders all links', () => {
 		render(
 			<MemoryRouter>
-				<SideBar />
+				<NavigationBar />
 			</MemoryRouter>
 		)
 		const homeLink = screen.getByText('Home')

@@ -1,8 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
-import './SideBar.css'
+import './NavigationBar.css'
 
-function SideBar() {
+function NavigationBar() {
 
     const logout = () => { 
         //also send a request to /api/logout once api is set up
@@ -30,4 +30,4 @@ function SideBar() {
     )
 }
 
-export default SideBar;
+export default NavigationBar;

@@ -1,14 +1,14 @@
 import React from 'react';
 import './Dashboard.css' 
 import DashboardRoutes from './DashboardRoutes';
-import SideBar from './SideBar';
+import NavigationBar from './NavigationBar';
 
 function Dashboard() {
     return (
             <div data-testid = "dashboard" className= "dash-container">
                 <div className= "center-content">
                     <div className= "sidebar">
-                        <SideBar />
+                        <NavigationBar />
                     </div>
                     <DashboardRoutes />
                 </div>
