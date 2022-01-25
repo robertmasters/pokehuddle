@@ -32,7 +32,7 @@ describe('Test Dashboard', () => {
 		const articlesLink = screen.getByText('Articles')
 		const photosLink = screen.getByText('Photos')
 		const logoutLink = screen.getByText('Logout')
-
+ 
 		expect(homeLink).toBeInTheDocument()
 		expect(researchLink).toBeInTheDocument()
 		expect(favoritepokemonLink).toBeInTheDocument()

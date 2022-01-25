@@ -4,7 +4,7 @@ import './SideBar.css'
 
 function SideBar() {
 
-    const logout = () => {
+    const logout = () => { 
         //also send a request to /api/logout once api is set up
         // window.localStorage.removeItem('token')
         console.log("clicked logged out")
