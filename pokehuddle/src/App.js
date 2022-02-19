@@ -10,7 +10,10 @@ function App() {
                 <div className="Route-container">
                     <Header />
                     <RoutesApp />
-                    <a target="_blank" className = "link" rel="noreferrer" href="https://github.com/robertmasters/pokehuddle/blob/main/Application_build_plan.md">Github  </a>with roadmap for app
+                    <a target="_blank" className = "link" rel="noreferrer" href="https://github.com/robertmasters/pokehuddle/blob/main/Application_build_plan.md">Front End repository </a>with roadmap for app
+                    <div> </div>
+                    <a target="_blank" className = "link" rel="noreferrer" href="https://github.com/robertmasters/pokehuddleSpringApp">REST API repository </a>
+
                 </div>
             </div>
         </Router>
