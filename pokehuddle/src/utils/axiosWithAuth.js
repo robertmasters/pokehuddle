@@ -2,11 +2,11 @@ import axios from "axios";
 
 //returns new instance of axios with the config object built into it
 export const axiosWithAuth = () => {
-    
+    const token = window.localStorage.getItem("token")
     return axios.create({
         headers: {
-            Authorization: JSON.parse(window.localStorage.getItem('token')),
+            Authorization: `Bearer ${token}`,
         },
-        baseURL: process.env.REACT_APP_LOCAL_API,
+        baseURL: "https://masters-pokehuddlerest.herokuapp.com/",
     })
 }
