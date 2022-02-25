@@ -5,10 +5,8 @@ import './NavigationBar.css'
 function NavigationBar() {
 
     const logout = () => { 
-        localStorage.removeItem("pokehuddle-token");
-        //also send a request to /api/logout once api is set up
-        // window.localStorage.removeItem('token')
-        console.log("clicked logged out")
+        localStorage.removeItem("pokehuddle-token")
+        //also send a request to /api/logout once api endpoint is set up
       }
 
     return (
