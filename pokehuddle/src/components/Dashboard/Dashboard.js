@@ -24,22 +24,19 @@ function Dashboard() {
                     
                         <DashboardRoutes />
                     </div> 
-                    : <div style={{color: "red", fontSize: "30px", fontWeight: "40px"}} >
+                    : <div 
+                    style={{
+                        color: "red", 
+                        fontSize: "30px", 
+                        fontWeight: "40px"
+                    }}>
                     <h2>Must be logged in to access website</h2>
                     <button 
-                    className='btn'
-                    style={{
-                        color: "red",
-                        fontSize: "30px",
-                        width: "30%",
-                        backgroundColor: "#2d537c"
-                        }}
-                    onClick={backtologin}
-                    >Log in</button> 
+                        className='login-btn'
+                        onClick={backtologin}>
+                    Go back to Log in</button> 
                     </div>
                 }
-                    
-                
             </div>
     );
 };

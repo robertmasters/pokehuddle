@@ -3,9 +3,6 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import Header from './components/LoginRegister/Header';
 import RoutesApp from './RoutesApp';
 
-console.log("testing env variable id: ", process.env.REACT_APP_CLIENT_ID)
-console.log("testing env variable id: ", process.env.REACT_APP_CLIENT_SECRET)
-
 function App() {
     return (
         <Router>
