@@ -35,7 +35,7 @@ export default function Research() {
 
     function getData(){
         axios
-        .get(`https://pokeapi.co/api/v2/pokemon/${searchName.pokemon.pokename.toLowerCase()}`)
+        .get(`http://pokeapi.co/api/v2/pokemon/${searchName.pokemon.pokename.toLowerCase()}`)
         .then(
             (res) => {
                 setPokemon(res.data)

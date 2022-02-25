@@ -35,7 +35,9 @@ function Login() {
 
 	return (
 		<div className = 'main-container'>
-			<div>User auth not set up<Link className = 'link' to ='/dashboard/research'>click here </Link>to enter app</div>
+			<div>Registration not yet set up, use Username: admin, Password: password <div/> 
+			<Link className = 'link' to ='/dashboard/research'>click here </Link>to enter app without loging in
+			</div>
 
 			<div className = 'middle-section'>
 				<div className = 'ashPikaimg-container'>

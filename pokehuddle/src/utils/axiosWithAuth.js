@@ -7,6 +7,9 @@ export const axiosWithAuth = () => {
         headers: {
             Authorization: `Bearer ${token}`,
         },
-        baseURL: "https://masters-pokehuddlerest.herokuapp.com/",
+        // baseURL: "http://masters-pokehuddlerest.herokuapp.com/",
+        baseURL: "http://localhost:2019",
+
+        
     })
 }
