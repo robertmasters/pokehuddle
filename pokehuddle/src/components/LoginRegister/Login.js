@@ -3,7 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { useForm } from "react-hook-form"
 import '../../App.css'
+import axios from 'axios';
 
+const client = process.env.REACT_APP_CLIENT_ID
+const secret = process.env.REACT_APP_CLIENT_SECRET
 function Login() {
 	const { register, formState: {errors}, handleSubmit } = useForm({
 		mode: 'onBlur'
@@ -11,17 +14,24 @@ function Login() {
 	const navigate = useNavigate()
 
 	function login(data) {
-		console.log(data)
 		//make a post request with username and password(state.credentials) as the data body
-		axiosWithAuth()
-		.post('/api/login', data)
+		axios
+		// .post('http://masters-pokehuddlerest.herokuapp.com/login',
+		.post('http://localhost:2019/login', 
+		`grant_type=password&username=${data.username}&password=${data.password}`,
+		{
+			headers: {
+				Authorization: `Basic ${Buffer.from(`${client}:${secret}`).toString('base64')}`,
+				"Content-Type": "application/x-www-form-urlencoded"
+		}})
 		.then((res) => {
 			//store token in local storage
 			//navigate to the dashboard after successfull login
-			window.localStorage.setItem('token', JSON.stringify(res.data.payload)) // JSON. stringify ensures that token is a string, only downside is that it has to be parsed when its accessed / also used window.localStorage instead of just localStorage, as some browsers dont recognize localStorage as a global variable, so using window. is a safe option
-			navigate.push('/dashboard')
+			window.localStorage.setItem('pokehuddle-token', JSON.stringify(res.data.access_token)) // JSON. stringify ensures that token is a string, only downside is that it has to be parsed when its accessed / also used window.localStorage instead of just localStorage, as some browsers dont recognize localStorage as a global variable, so using window. is a safe option
+			console.log("token: ", res.data.access_token)
+			navigate('/dashboard')
 		})
-		.catch((err)=> console.log(err))
+		.catch((err)=> console.log("this is the error: ",err))
 	}
 
 	return (
