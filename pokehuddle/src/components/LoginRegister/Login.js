@@ -28,7 +28,6 @@ function Login() {
 			//store token in local storage
 			//navigate to the dashboard after successfull login
 			window.localStorage.setItem('pokehuddle-token', JSON.stringify(res.data.access_token)) // JSON. stringify ensures that token is a string, only downside is that it has to be parsed when its accessed / also used window.localStorage instead of just localStorage, as some browsers dont recognize localStorage as a global variable, so using window. is a safe option
-			console.log("token: ", res.data.access_token)
 			navigate('/dashboard')
 		})
 		.catch((err)=> console.log("this is the error: ",err))
