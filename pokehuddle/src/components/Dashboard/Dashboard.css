@@ -87,20 +87,11 @@
 }
 
 .login-btn:hover{
-
     color: #333;
     text-shadow: #333 0px 0px 3px;
-    /* box-shadow: #4378b1 0px 0px 3px; */
-}
-
-.login-btn:focus-visible{
-    outline: 0px;
-    background-color: #4378b1;
-    color: #f3e73d;
-    
 }
 
 .login-btn:active{
-    color: #fff537;
-    /* background-color: #2d537c; */
+        color: red;
+        text-shadow: rgb(160, 126, 126) 0px 0px 2px;
 }
