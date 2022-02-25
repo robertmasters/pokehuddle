@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { useForm } from "react-hook-form"
 import '../../App.css'
 import axios from 'axios';
@@ -14,10 +13,8 @@ function Login() {
 	const navigate = useNavigate()
 
 	function login(data) {
-		//make a post request with username and password(state.credentials) as the data body
 		axios
-		// .post('http://masters-pokehuddlerest.herokuapp.com/login',
-		.post('http://localhost:2019/login', 
+		.post('https://masters-pokehuddlerest.herokuapp.com/login',
 		`grant_type=password&username=${data.username}&password=${data.password}`,
 		{
 			headers: {
@@ -25,8 +22,6 @@ function Login() {
 				"Content-Type": "application/x-www-form-urlencoded"
 		}})
 		.then((res) => {
-			//store token in local storage
-			//navigate to the dashboard after successfull login
 			window.localStorage.setItem('pokehuddle-token', JSON.stringify(res.data.access_token)) // JSON. stringify ensures that token is a string, only downside is that it has to be parsed when its accessed / also used window.localStorage instead of just localStorage, as some browsers dont recognize localStorage as a global variable, so using window. is a safe option
 			navigate('/dashboard')
 		})
