@@ -24,8 +24,15 @@ function Login() {
 		.then((res) => {
 			window.localStorage.setItem('pokehuddle-token', JSON.stringify(res.data.access_token)) // JSON. stringify ensures that token is a string, only downside is that it has to be parsed when its accessed / also used window.localStorage instead of just localStorage, as some browsers dont recognize localStorage as a global variable, so using window. is a safe option
 			navigate('/dashboard')
+			console.log("response: ", res)
 		})
 		.catch((err)=> console.log("this is the error: ",err))
+	}
+
+	function handleKeyPress(e) {
+		if (e.keyCode === 13) {
+			handleSubmit()
+		}
 	}
 
 	return (
@@ -55,6 +62,7 @@ function Login() {
 							name = 'username'
 							placeholder = "Username"
 							data-testid='username-input'
+							onKeyPress={handleKeyPress}
 							{...register('username', { required: true })}
 						/>
 						{errors.username && (
@@ -66,6 +74,7 @@ function Login() {
 							name='password'
 							placeholder = 'Password'
 							data-testid='password-input'
+							onKeyPress={handleKeyPress}
 							{...register('password', { required: true })}
 						/>
 						{errors.password && (
