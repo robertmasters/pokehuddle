@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form"
 import '../../App.css'
@@ -7,12 +7,15 @@ import axios from 'axios';
 const client = process.env.REACT_APP_CLIENT_ID
 const secret = process.env.REACT_APP_CLIENT_SECRET
 function Login() {
+	const [isLoading, setIsLoading ] = useState(false)
+	const [loginError, setLoginError ] = useState()
 	const { register, formState: {errors}, handleSubmit } = useForm({
 		mode: 'onBlur'
 	})
 	const navigate = useNavigate()
 
 	function login(data) {
+		setIsLoading(true)
 		axios
 		.post('https://masters-pokehuddlerest.herokuapp.com/login',
 		`grant_type=password&username=${data.username}&password=${data.password}`,
@@ -23,10 +26,16 @@ function Login() {
 		}})
 		.then((res) => {
 			window.localStorage.setItem('pokehuddle-token', JSON.stringify(res.data.access_token)) // JSON. stringify ensures that token is a string, only downside is that it has to be parsed when its accessed / also used window.localStorage instead of just localStorage, as some browsers dont recognize localStorage as a global variable, so using window. is a safe option
+			setIsLoading(true)
 			navigate('/dashboard')
 			console.log("response: ", res)
+
 		})
-		.catch((err)=> console.log("this is the error: ",err))
+		.catch((err)=> {
+			setIsLoading(false)
+			setLoginError("Invalid username or password")
+			console.log("this is the error: ",err)
+	})
 	}
 
 	function handleKeyPress(e) {
@@ -57,6 +66,9 @@ function Login() {
 					</div>
 
 					<form className = 'login-flex-item' onSubmit = {handleSubmit(login)}>
+					{
+						loginError ? <span role = 'alert' className='error-message'>{loginError}</span> : null
+					}
 						<input className = 'form-item'
 							type = 'text'
 							name = 'username'
@@ -81,7 +93,7 @@ function Login() {
 							<p 
 							role = 'alert' className='error-message'>Looks like there was an error: Password is {errors.password.type}</p>
 						)}
-						<button className = 'form-item btn'>Log in</button>
+						{ isLoading ? <span>Loading...</span> : <button className = 'form-item btn'>Log in</button> }
 					</form>
 				</div>
 			</div>
