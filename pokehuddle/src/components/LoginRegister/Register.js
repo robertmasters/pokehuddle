@@ -54,7 +54,7 @@ function Register() {
 
     return (
         <div className = "main-container">
-            <div>Registration not fully set up,<Link className = "link" to ="/login">click here </Link>to go back to login</div>
+            <div>Registration not fully set up,<Link className = "link" to ="/">click here </Link>to go back to login</div>
             
             <div className = "middle-section">
                 <div className = "ashPikaimg-container">
