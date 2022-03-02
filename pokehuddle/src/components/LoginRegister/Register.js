@@ -1,34 +1,64 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom';
-import { useForm } from "react-hook-form"
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
-
+import React, { useState } from "react"
+import { Link, useNavigate } from "react-router-dom";
+import { useForm, useWatch } from "react-hook-form"
+import axios from "axios";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
+const client = process.env.REACT_APP_CLIENT_ID
+const secret = process.env.REACT_APP_CLIENT_SECRET
 function Register() {
-    const { register, formState: {errors}, handleSubmit } = useForm({
-		mode: 'onBlur'
+    const [isLoading, setIsLoading ] = useState(false)
+	const [loginError, setLoginError ] = useState()
+    const { register, watch, formState: {errors}, handleSubmit } = useForm({
+		mode: "onBlur"
 	})
     const navigate = useNavigate()
 
     function goToLogin (data) {
-        console.log(data)
-        axiosWithAuth()
-		.post('/api/register', data)
+        const body = JSON.stringify(
+            {
+                "username": data.username,
+                "password": data.password,
+                "email": data.email,
+                "articles": [],
+                "roles": [
+                {
+                    "role": {
+                        "roleid": 2,
+                        "name": "user"
+                    }
+                }
+            ]}
+        )
+		setIsLoading(true)
+		axios
+		.post("https://masters-pokehuddlerest.herokuapp.com/createnewuser",
+		body,
+		{
+			headers: {
+				Authorization: `Basic ${Buffer.from(`${client}:${secret}`).toString("base64")}`,
+				"Content-Type": "application/json"
+		}})
 		.then((res) => {
-			//store token in local storage
-			//navigate to the dashboard after successfull login
-			window.localStorage.setItem('token', JSON.stringify(res.data.payload)) // JSON. stringify ensures that token is a string, only downside is that it has to be parsed when its accessed / also used window.localStorage instead of just localStorage, as some browsers dont recognize localStorage as a global variable, so using window. is a safe option
-			navigate.push('/')
+			setIsLoading(true)
+			navigate("/")
+			console.log("response: ", res)
+
 		})
-		.catch((err)=> console.log(err))
+		.catch((err)=> {
+            setIsLoading(false)
+            setLoginError("Registration Error please try again")
+            console.log(err)
+        })
     }
+    const password = watch("password")
 
     return (
         <div className = "main-container">
-            <div>User auth not set up <Link className = "link" to ='/dashboard/research'>click here </Link>to enter app</div>
+            <div>Registration not fully set up,<Link className = "link" to ="/login">click here </Link>to go back to login</div>
             
             <div className = "middle-section">
                 <div className = "ashPikaimg-container">
-                    <img className ="ashpikaimg" src = {require('../../images/ashpika.png').default} alt = 'Ash and Pikachu landing page' />
+                    <img className ="ashpikaimg" src = {require("../../images/ashpika.png").default} alt = "Ash and Pikachu landing page" />
                 </div>
                 
                 <div className= "login-section">
@@ -40,45 +70,68 @@ function Register() {
                 
                     <div className = "selection login-flex-item">
                         Already a member? &nbsp;
-                        <Link to ='/' className = 'select-logreg'>Login</Link>
+                        <Link to ="/" className = "select-logreg">Login</Link>
                     </div>
 
-                    <form className = 'login-flex-item' onSubmit = {handleSubmit(goToLogin)}>
-                
-                        <input className = 'form-item'
-                            type = 'text'
-                            name = 'name'
-                            placeholder = "Enter Name"
-                            data-testid='name-input'
-                            {...register('name', { required: true })}
-                        />
-                        {errors.name && (
-							<p 
-							role = 'alert' className='error-message'>Looks like there was an error: Name is {errors.name.type}</p>
-						)}
-                        <input className = 'form-item'
-                            type = 'text'
-                            name = 'username'
+                    <form className = "login-flex-item" onSubmit = {handleSubmit(goToLogin)}>
+                    {
+						loginError ? <span role = "alert" className="error-message">{loginError}</span> : null
+					}
+                        <input className = "form-item"
+                            type = "text"
+                            name = "username"
                             placeholder = "Username"
-                            data-testid='username-input'
-                            {...register('username', { required: true })}
+                            data-testid="username-input"
+                            {...register("username", { required: "Username is required" })}
                         />
                         {errors.username && (
 							<p 
-							role = 'alert' className='error-message'>Looks like there was an error: Username is {errors.username.type}</p>
+							role = "alert" className="error-message">{errors.username.message}</p>
 						)}
-                        <input className = 'form-item'
+
+                        <input className = "form-item"
+                            type = "email"
+                            name = "email"
+                            placeholder = "Email"
+                            data-testid="email-input"
+                            {...register("email", {
+                                required: "Email is required" ,
+                                pattern : {
+                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                    message: "invalid email address"
+                                }
+                            })}
+                        />
+                        {errors.email && (
+							<p 
+							role = "alert" className="error-message">{errors.email.message}</p>
+						)}
+
+                        <input className = "form-item"
                             type="password"
                             name="password"
                             placeholder = "Password"
-                            data-testid='password-input'
-                            {...register('password', { required: true })}
+                            data-testid="password-input"
+                            {...register("password", { required: "Password is required" })}
                         />
                         {errors.password && (
 							<p 
-							role = 'alert' className='error-message'>Looks like there was an error: Password is {errors.password.type}</p>
+							role = "alert" className="error-message">{errors.password.message}</p>
 						)}
-                        <button className = 'form-item btn'>Register</button>
+                        <input className = "form-item relative"
+                        type="password"
+                        name="confirm-password"
+                        placeholder = "Confirm Password"
+                        data-testid="confirm-password-input"
+                        {...register("confirmPassword", {required: "Please confirm password", validate: (value) => value === password || "Passwords do not match"  })}
+                        />
+                        {errors.confirmPassword && (
+                            <p 
+                            role = "alert" className="error-message">{errors.confirmPassword.message}</p>
+                        )}
+                        { isLoading ? <span>Loading...</span> : 
+                            
+                            <button className = "form-item btn">Register</button> }
                     </form>
                 </div>
             </div>

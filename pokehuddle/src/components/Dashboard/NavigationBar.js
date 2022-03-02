@@ -1,12 +1,21 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import './NavigationBar.css'
 
 function NavigationBar() {
 
     const logout = () => { 
-        localStorage.removeItem("pokehuddle-token")
-        //also send a request to /api/logout once api endpoint is set up
+        axiosWithAuth()
+        .post("/logout")
+        .catch((error) => {
+            console.log(error)
+        })
+        .finally(() =>{
+            localStorage.removeItem("pokehuddle-token")
+        })
+        
+        console.log("clicked logged out")
       }
 
     return (
