@@ -2,9 +2,10 @@ import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { useForm, useWatch } from "react-hook-form"
 import axios from "axios";
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
+
 const client = process.env.REACT_APP_CLIENT_ID
 const secret = process.env.REACT_APP_CLIENT_SECRET
+
 function Register() {
     const [isLoading, setIsLoading ] = useState(false)
 	const [loginError, setLoginError ] = useState()
@@ -32,12 +33,14 @@ function Register() {
 		setIsLoading(true)
 		axios
 		.post("https://masters-pokehuddlerest.herokuapp.com/createnewuser",
-		body,
+		body
+        ,
 		{
 			headers: {
 				Authorization: `Basic ${Buffer.from(`${client}:${secret}`).toString("base64")}`,
 				"Content-Type": "application/json"
-		}})
+		}}
+        )
 		.then((res) => {
 			setIsLoading(true)
 			navigate("/")
@@ -54,7 +57,7 @@ function Register() {
 
     return (
         <div className = "main-container">
-            <div>Registration not fully set up,<Link className = "link" to ="/">click here </Link>to go back to login</div>
+            {/*<div>Registration not fully set up,<Link className = "link" to ="/">click here </Link>to go back to login</div>*/}
             
             <div className = "middle-section">
                 <div className = "ashPikaimg-container" style={{width: "80%"}}>
