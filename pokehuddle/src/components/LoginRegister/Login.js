@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const client = process.env.REACT_APP_CLIENT_ID
 const secret = process.env.REACT_APP_CLIENT_SECRET
+
 function Login() {
 	const [isLoading, setIsLoading ] = useState(false)
 	const [loginError, setLoginError ] = useState()
@@ -34,8 +35,8 @@ function Login() {
 		.catch((err)=> {
 			setIsLoading(false)
 			setLoginError("Invalid username or password")
-			console.log("this is the error: ",err)
-	})
+			console.log("error: ",err)
+		})
 	}
 
 	function handleKeyPress(e) {
@@ -46,9 +47,9 @@ function Login() {
 
 	return (
 		<div className = 'main-container'>
-			<div>Registration not yet set up, use Username: admin, Password: password <div/> 
+			{/*<div>Registration not yet set up, use Username: admin, Password: password <div/> 
 			<Link className = 'link' to ='/dashboard/research'>click here </Link>to enter app without loging in
-			</div>
+			</div>*/}
 
 			<div className = 'middle-section'>
 				<div className = 'ashPikaimg-container'>
