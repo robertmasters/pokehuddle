@@ -60,8 +60,8 @@ function Register() {
             {/*<div>Registration not fully set up,<Link className = "link" to ="/">click here </Link>to go back to login</div>*/}
             
             <div className = "middle-section">
-                <div className = "ashPikaimg-container" style={{width: "80%"}}>
-                    <img className ="ashpikaimg" src = {require("../../images/ashpika.png").default} alt = "Ash and Pikachu landing page" />
+                <div className = "ashPikaimg-container" >
+                    <img className ="ashpikaimg" style={{width: "80%"}} src = {require("../../images/ashpika.png").default} alt = "Ash and Pikachu landing page" />
                 </div>
                 
                 <div className= "login-section">
