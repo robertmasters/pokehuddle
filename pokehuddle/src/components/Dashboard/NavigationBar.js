@@ -7,7 +7,7 @@ function NavigationBar() {
 
     const logout = () => { 
         axiosWithAuth()
-        .post("/logout")
+        .get("/logout")
         .catch((error) => {
             console.log(error)
         })
