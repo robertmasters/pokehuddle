@@ -1,21 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Dashboard.css' 
 import DashboardRoutes from './DashboardRoutes';
 import NavigationBar from './NavigationBar';
 import { useNavigate } from 'react-router-dom';
-
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 function Dashboard() {
+    const [username , setUsername] = useState("")
 	const navigate = useNavigate()
 
     function backtologin() {
         navigate('/')
     }
+
+    function checkAuthorization() {
+		axiosWithAuth()
+		.get("/users/user/3")
+		.then((response) => {
+			setUsername(response.data.username) 
+		}) 
+		if (username === "admin") {
+			return true
+		} else
+		return false
+	}
     return (
             <div data-testid = "dashboard" className= "dash-container">
-                
                 {
-                    (window.localStorage.getItem('pokehuddle-token'))
+                    checkAuthorization()
                     ?
                     <div className= "center-content">
                         <div className= "sidebar">
