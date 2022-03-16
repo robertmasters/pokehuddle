@@ -22,6 +22,12 @@ export default function Research() {
         })
     }
 
+    function handleEnterPress(e) {
+		if (e.keyCode === 13) {
+			getData()
+		}
+	}
+
     useEffect(() => {
     axios
     .get(`https://pokeapi.co/api/v2/pokemon/pikachu`)
@@ -54,6 +60,7 @@ export default function Research() {
                     placeholder = "Pokemon name"
                     value = {searchName.pokemon.pokename}
                     onChange ={handleChange}
+                    onKeyPress={handleEnterPress}
                 />
                 <button 
                 data-testid = 'search-btn'
