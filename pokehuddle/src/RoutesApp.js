@@ -1,6 +1,5 @@
 import React from 'react';
-import {Route, Routes, Navigate} from 'react-router-dom'
-import PrivateRoute from './components/PrivateRoute';
+import {Route, Routes} from 'react-router-dom'
 import Login from './components/LoginRegister/Login';
 import Dashboard from './components/Dashboard/Dashboard';
 import Register from './components/LoginRegister/Register';

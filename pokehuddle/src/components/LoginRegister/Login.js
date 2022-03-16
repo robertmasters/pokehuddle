@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form"
 import '../../App.css'
@@ -79,7 +79,6 @@ function Login(props) {
 }
 
 const mapStateToProps = (state) => {
-	console.log("state redux: ",state)
 	return {
 		isLoading: state.isLoading,
 		username: state.username,

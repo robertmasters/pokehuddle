@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
-import { useForm, useWatch } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import axios from "axios";
 
 const client = process.env.REACT_APP_CLIENT_ID
@@ -44,7 +44,6 @@ function Register() {
 		.then((res) => {
 			setIsLoading(true)
 			navigate("/")
-			console.log("response: ", res)
 
 		})
 		.catch((err)=> {
