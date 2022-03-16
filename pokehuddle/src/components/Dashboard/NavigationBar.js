@@ -14,8 +14,6 @@ function NavigationBar() {
         .finally(() =>{
             localStorage.removeItem("pokehuddle-token")
         })
-        
-        console.log("clicked logged out")
       }
 
     return (
