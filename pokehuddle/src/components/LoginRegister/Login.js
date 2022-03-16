@@ -2,44 +2,20 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form"
 import '../../App.css'
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { fetchLogin } from '../../store/actions';
 
-const client = process.env.REACT_APP_CLIENT_ID
-const secret = process.env.REACT_APP_CLIENT_SECRET
-
-function Login() {
-	const [isLoading, setIsLoading ] = useState(false)
-	const [loginError, setLoginError ] = useState()
+function Login(props) {
 	const { register, formState: {errors}, handleSubmit } = useForm({
 		mode: 'onBlur'
 	})
 	const navigate = useNavigate()
 
 	function login(data) {
-		setIsLoading(true)
-		axios
-		.post('https://masters-pokehuddlerest.herokuapp.com/login',
-		`grant_type=password&username=${data.username}&password=${data.password}`,
-		{
-			headers: {
-				Authorization: `Basic ${Buffer.from(`${client}:${secret}`).toString('base64')}`,
-				"Content-Type": "application/x-www-form-urlencoded"
-		}})
-		.then((res) => {
-			window.localStorage.setItem('pokehuddle-token', JSON.stringify(res.data.access_token)) // JSON. stringify ensures that token is a string, only downside is that it has to be parsed when its accessed / also used window.localStorage instead of just localStorage, as some browsers dont recognize localStorage as a global variable, so using window. is a safe option
-			setIsLoading(true)
-			navigate('/dashboard')
-			console.log("response: ", res)
-
-		})
-		.catch((err)=> {
-			setIsLoading(false)
-			setLoginError("Invalid username or password")
-			console.log("error: ",err)
-		})
+		props.fetchLogin(data, navigate)
 	}
 
-	function handleKeyPress(e) {
+	function handleEnterPress(e) {
 		if (e.keyCode === 13) {
 			handleSubmit()
 		}
@@ -68,14 +44,14 @@ function Login() {
 
 					<form className = 'login-flex-item' onSubmit = {handleSubmit(login)}>
 					{
-						loginError ? <span role = 'alert' className='error-message'>{loginError}</span> : null
+						props.error ? <span role = 'alert' className='error-message'>{props.error}</span> : null
 					}
 						<input className = 'form-item'
 							type = 'text'
 							name = 'username'
 							placeholder = "Username"
 							data-testid='username-input'
-							onKeyPress={handleKeyPress}
+							onKeyPress={handleEnterPress}
 							{...register('username', { required: true })}
 						/>
 						{errors.username && (
@@ -87,14 +63,14 @@ function Login() {
 							name='password'
 							placeholder = 'Password'
 							data-testid='password-input'
-							onKeyPress={handleKeyPress}
+							onKeyPress={handleEnterPress}
 							{...register('password', { required: true })}
 						/>
 						{errors.password && (
 							<p 
 							role = 'alert' className='error-message'>Looks like there was an error: Password is {errors.password.type}</p>
 						)}
-						{ isLoading ? <span>Loading...</span> : <button className = 'form-item btn'>Log in</button> }
+						{ props.isLoading ? <span>Loading...</span> : <button className = 'form-item btn'>Log in</button> }
 					</form>
 				</div>
 			</div>
@@ -102,5 +78,14 @@ function Login() {
 	);
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+	console.log("state redux: ",state)
+	return {
+		isLoading: state.isLoading,
+		username: state.username,
+		error: state.error
+	}
+}
+
+export default connect(mapStateToProps, {fetchLogin})(Login);
   
