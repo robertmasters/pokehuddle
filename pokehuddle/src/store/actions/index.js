@@ -11,10 +11,19 @@ export const fetchLogin = (data, navigate) => {
 
 	return (dispatch) => {
 
+		const localURL = process.env.REACT_APP_API_URL
+		let baseUrl = ""
+		console.log("localURL: ",localURL)
+		if (URL) {
+			baseUrl = localURL
+		} else {
+			baseUrl = "https://masters-pokehuddlerest.herokuapp.com"
+		}
+		
 		dispatch({ type: FETCH_LOGIN_TOKEN_START })
 
 		axios
-		.post('https://masters-pokehuddlerest.herokuapp.com/login',
+		.post(`${baseUrl}/login`,
 		`grant_type=password&username=${data.username}&password=${data.password}`,
 		{
 			headers: {
