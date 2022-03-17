@@ -12,7 +12,16 @@ function Register() {
     const { register, watch, formState: {errors}, handleSubmit } = useForm({
 		mode: "onBlur"
 	})
+
+
     const navigate = useNavigate()
+
+    let baseUrl = null
+    if (process.env.REACT_APP_API_URL) {
+        baseUrl = process.env.REACT_APP_API_URL
+    } else {
+        baseUrl = "https://masters-pokehuddlerest.herokuapp.com"
+    }
 
     function goToLogin (data) {
         const body = JSON.stringify(
@@ -32,7 +41,7 @@ function Register() {
         )
 		setIsLoading(true)
 		axios
-		.post("https://masters-pokehuddlerest.herokuapp.com/createnewuser",
+		.post(`${baseUrl}/createnewuser`,
 		body
         ,
 		{
