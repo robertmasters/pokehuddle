@@ -3,9 +3,9 @@ import axios from "axios";
 //returns new instance of axios with the config object built into it.
 export const axiosWithAuth = () => {
     const localURL = process.env.REACT_APP_API_URL
-    let baseUrl = ""
+    let baseUrl = null
     console.log("localURL: ",localURL)
-    if (URL) {
+    if (URL ) {
         baseUrl = localURL
     } else {
         baseUrl = "https://masters-pokehuddlerest.herokuapp.com"
@@ -15,6 +15,6 @@ export const axiosWithAuth = () => {
         headers: {
             Authorization: `Bearer ${token}`,
         },
-        baseURL: baseUrl
+        baseURL: "https://masters-pokehuddlerest.herokuapp.com"
     })
 }

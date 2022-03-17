@@ -23,7 +23,7 @@ export const fetchLogin = (data, navigate) => {
 		dispatch({ type: FETCH_LOGIN_TOKEN_START })
 
 		axios
-		.post(`${baseUrl}/login`,
+		.post('https://masters-pokehuddlerest.herokuapp.com/login',
 		`grant_type=password&username=${data.username}&password=${data.password}`,
 		{
 			headers: {
