@@ -13,6 +13,7 @@ function NavigationBar() {
         })
         .finally(() =>{
             localStorage.removeItem("pokehuddle-token")
+            localStorage.removeItem("pokehuddle-username")
         })
       }
 

@@ -5,11 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { userReducer } from './store/reducers';
+import { loginReducer } from './store/reducers';
 import thunk from 'redux-thunk';
 // import logger from 'redux-logger';
 
-const store = createStore(userReducer, applyMiddleware(thunk))
+const store = createStore(loginReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   <React.StrictMode>

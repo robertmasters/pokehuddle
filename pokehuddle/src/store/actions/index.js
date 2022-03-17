@@ -22,9 +22,11 @@ export const fetchLogin = (data, navigate) => {
 				"Content-Type": "application/x-www-form-urlencoded"
 		}})
 		.then((res) => {
-			dispatch({ type: FETCH_LOGIN_TOKEN_SUCCESS, payload: data.username})
 			window.localStorage.setItem('pokehuddle-token', JSON.stringify(res.data.access_token)) // JSON. stringify ensures that token is a string, only downside is that it has to be parsed when its accessed / also used window.localStorage instead of just localStorage, as some browsers dont recognize localStorage as a global variable, so using window. is a safe option
-			console.log("response: ", res)
+			window.localStorage.setItem('pokehuddle-username', data.username)
+
+			dispatch({ type: FETCH_LOGIN_TOKEN_SUCCESS, payload: window.localStorage.getItem("pokehuddle-username")})
+
 			navigate('/dashboard')
 		})
 		.catch((err)=> {
@@ -33,4 +35,6 @@ export const fetchLogin = (data, navigate) => {
 		})
 
 	}
+
+
 }

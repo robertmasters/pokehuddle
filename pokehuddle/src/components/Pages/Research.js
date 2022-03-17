@@ -23,6 +23,7 @@ export default function Research() {
     }
 
     function handleEnterPress(e) {
+        
 		if (e.keyCode === 13) {
 			getData()
 		}
@@ -39,7 +40,8 @@ export default function Research() {
     .catch((err) => console.log(err.response.data.error))
     }, [])
 
-    function getData(){
+    function getData(e){
+        e.preventDefault()
         axios
         .get(`https://pokeapi.co/api/v2/pokemon/${searchName.pokemon.pokename.toLowerCase()}`)
         .then(
@@ -53,19 +55,20 @@ export default function Research() {
     return (
         <div data-testid = "research" className = "component-container">
             <img className ="researchtext" src = {require('../../images/Researchtext.png').default} alt = 'research title' />
-            <div className = "pokemon-container"> 
+            <div className = "pokemon-container">
+            <form onSubmit={getData} style={{display: "flex", flexDirection: "row", margin: "0 auto"}} > 
                 <input className = 'search'
                     type = 'text'
                     name = 'pokename'
                     placeholder = "Pokemon name"
                     value = {searchName.pokemon.pokename}
-                    onChange ={handleChange}
                     onKeyPress={handleEnterPress}
+                    onChange ={handleChange}
                 />
                 <button 
                 data-testid = 'search-btn'
-                onClick = {getData} 
                 className = "search-btn">Search</button>
+            </form>
             </div>
             <div></div>
         

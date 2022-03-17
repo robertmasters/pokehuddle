@@ -1,4 +1,5 @@
 import { FETCH_LOGIN_TOKEN_ERROR, FETCH_LOGIN_TOKEN_START, FETCH_LOGIN_TOKEN_SUCCESS } from "../actions"
+import { FETCH_USER_DATA } from "../actions/fetchUserData"
 
 const initialState = {
 	isLoading: false,
@@ -6,7 +7,7 @@ const initialState = {
 	error: ""
 }
 
-export const userReducer = (state = initialState, action) => {
+export const loginReducer = (state = initialState, action) => {
 	switch(action.type) {
 
 		case FETCH_LOGIN_TOKEN_START:
@@ -26,6 +27,11 @@ export const userReducer = (state = initialState, action) => {
 				...state,
 				isLoading: false,
 				error: action.payload,
+			}
+		case FETCH_USER_DATA:
+			return {
+				...state,
+				username: action.payload
 			}
 		default:
 			return state

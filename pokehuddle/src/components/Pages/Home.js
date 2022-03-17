@@ -1,23 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux';
+import { fetchUserData } from '../../store/actions/fetchUserData';
 import './Home.css'
 
-export default function Home() {
-    const [userData, setUserData] = useState({});
+function Home(props) {
     useEffect(() => {
-		axiosWithAuth()
-			.get("/users/user/3")
-			.then((res) => {
-				setUserData(res.data)
-
-			})
-			.catch((err) => {
-				console.log("err: ", err);
-			});
+        props.fetchUserData()
 	}, []);
     return (
         <div>
-            <h1>Welcome {userData.username}!</h1>
+            <h1>Welcome {props.username}!</h1>
             <div data-testid = "home" className = "home-container">
                 <div className = "favorite-notification-container">
                     <div>
@@ -35,3 +27,12 @@ export default function Home() {
         </div>
     )
 }
+
+const mapStateToProps = (state) => {
+    console.log(state.username)
+    return {
+        username: state.username
+    }
+}
+
+export default connect(mapStateToProps, {fetchUserData})(Home)
