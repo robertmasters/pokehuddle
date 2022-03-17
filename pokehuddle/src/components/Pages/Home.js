@@ -12,18 +12,18 @@ function Home(props) {
         <div>
             <h1>Welcome {props.username}!</h1>
             <div data-testid = "home" className = "home-container">
-                <div className = "favorite-notification-container">
+                <div className = "favorite-container">
                     <div>
                         <img className ="favoritestextimg" src = {require('../../images/favoritestext.png').default} alt = 'favorites' />
                     </div>
-                    <div>
-                        <img className ="notificationstextimg" src = {require('../../images/notificationstext.png').default} alt = 'notifications' />
-                    </div>
                 </div>
                 
-                <div className = "news">
-                    <img className ="newstextimg" src = {require('../../images/newstext.png').default} alt = 'news' />
-                </div>
+                <div className = "news-container">
+                    <img className = "newstextimg" src = {require('../../images/RecentNote.png').default} alt = 'news' />
+                    <div>
+                        <img className = "pikachu-waving" src= {require('../../images/pikawave.png').default} alt = "pikachu waving" />
+                    </div>
+                    </div>
             </div>
         </div>
     )
