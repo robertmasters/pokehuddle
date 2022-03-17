@@ -1,6 +1,6 @@
 import axios from "axios";
 
-//returns new instance of axios with the config object built into it
+//returns new instance of axios with the config object built into it.
 export const axiosWithAuth = () => {
     const token = JSON.parse(window.localStorage.getItem("pokehuddle-token"))
     return axios.create({
