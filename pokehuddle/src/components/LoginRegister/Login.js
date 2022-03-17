@@ -35,7 +35,7 @@ function Login(props) {
 				<div data-testid = 'login-section' className= 'login-section'>
 
 					<div className = 'description login-flex-item'>
-					PokeHuddle is a personal space for you to research Pokemon, favorite them, view leaderboards, view other members fan art, and upload your own!
+					PokeHuddle is a personal space for you to research Pokemon, and write articles about the Pokemon universe.
 					</div>
 
 					<div className = 'selection  login-flex-item'>
