@@ -4,9 +4,10 @@ import { fetchUserData } from '../../store/actions/fetchUserData';
 import './Home.css'
 
 function Home(props) {
+    const {fetchUserData} = props
     useEffect(() => {
-        props.fetchUserData()
-	}, []);
+        fetchUserData()
+	}, [fetchUserData]);
     return (
         <div>
             <h1>Welcome {props.username}!</h1>
@@ -29,7 +30,6 @@ function Home(props) {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.username)
     return {
         username: state.username
     }
