@@ -4,6 +4,9 @@ import { FETCH_USER_DATA } from "../actions/fetchUserData"
 const initialState = {
 	isLoading: false,
 	username: "",
+	articles: {},
+	email: "",
+	role: "",
 	error: ""
 }
 
@@ -31,7 +34,10 @@ export const loginReducer = (state = initialState, action) => {
 		case FETCH_USER_DATA:
 			return {
 				...state,
-				username: action.payload
+				username: action.payload.username,
+				articles: action.payload.articles,
+				email: action.payload.email,
+				role: action.payload.role
 			}
 		default:
 			return state

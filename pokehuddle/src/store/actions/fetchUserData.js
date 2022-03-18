@@ -11,13 +11,13 @@ export const fetchUserData = () => {
 		.then((res) => {
 			// setUserData(res.data)
 			// console.log("fetchUserData: ", res)
-
+			dispatch({ type: FETCH_USER_DATA, payload: res.data })
 		})
 		.catch((err) => {
 			console.log("err: ", err);
 		});
 
-		dispatch({ type: FETCH_USER_DATA, payload:uname })
+		
 
 	}
 }

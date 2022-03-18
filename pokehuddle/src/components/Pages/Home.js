@@ -5,6 +5,13 @@ import './Home.css'
 
 function Home(props) {
     const {fetchUserData} = props
+    let article = {}
+    let noteCreatedDate = "You havent written any notes yet"
+    if (props.article.length) {
+        article = props.article[props.article.length-1]
+        noteCreatedDate = article.createddate.split(" ")[0]
+
+    }
     useEffect(() => {
         fetchUserData()
 	}, [fetchUserData]);
@@ -18,11 +25,19 @@ function Home(props) {
                     </div>
                 </div>
                 
-                <div className = "news-container">
-                    <img className = "newstextimg" src = {require('../../images/RecentNote.png').default} alt = 'news' />
-                    <div>
-                        <img className = "pikachu-waving" src= {require('../../images/pikawave.png').default} alt = "pikachu waving" />
-                    </div>
+                <div className = "recent-note-container">
+                    <img src = {require('../../images/RecentNote.png').default} alt = 'recent note' />
+                    
+                    <div className="note-and-pikachu-container">
+                        <div className="note">
+                            <div className="note-title">{article.title}</div>
+                            
+                            <div className="created-date">{noteCreatedDate}</div>
+
+                            <div className="note-body">{article.body} {article.body} {article.body} {article.body} {article.body} {article.body}</div>
+                        </div>
+                            <img className = "pikachu-waving" src= {require('../../images/pikawave2.png').default} alt = "pikachu waving" />
+                        </div>
                     </div>
             </div>
         </div>
@@ -31,7 +46,8 @@ function Home(props) {
 
 const mapStateToProps = (state) => {
     return {
-        username: state.username
+        username: state.username,
+        article: state.articles
     }
 }
 
