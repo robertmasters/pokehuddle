@@ -30,7 +30,7 @@ function NavigationBar() {
                             <li><Link className = "link" to = 'research' >Research</Link></li>
                             <li><Link className = "link" to = 'favoritepokemon' >Favorites</Link></li>
                             <li><Link className = "link" to = 'leaderboard' >Leaderboard</Link></li>
-                            <li><Link className = "link" to = 'articles' >Articles</Link></li>
+                            <li><Link className = "link" to = 'articles' >Notes</Link></li>
                             <li><Link className = "link" to = 'photos' >Photos</Link></li>
                             <li><Link className = "link" onClick={logout} to ='/'>Logout</Link></li>
                         </ul>
