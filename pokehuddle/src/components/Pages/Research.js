@@ -102,9 +102,8 @@ export default function Research() {
 
                         <div className = 'pokemon-side-metrics'>
                              <div>Type: {pokemon.types[0].type.name.charAt(0).toUpperCase() + pokemon.types[0].type.name.slice(1)}</div>
-                             <div>Pokemon Summary</div>
+                             <div>Summary:</div>
                              <div className="pokemon-summary">{summary}</div>
-
                         </div>
                     </div>
                 </div>

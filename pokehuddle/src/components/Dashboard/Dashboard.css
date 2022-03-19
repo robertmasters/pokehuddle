@@ -6,7 +6,7 @@
 }
 
 .sidebar {
-    width: 100%;
+    width: 250px;
     margin-top: 10px;
     padding-top: 20px;
 }
@@ -26,10 +26,20 @@
         width: 100%;
         margin: 0 auto;
     }
+    .sidebar {
+        width: 200px;
+        margin-top: 10px;
+        padding-top: 20px;
+    }
 }
 @media (max-width: 1000px) {
     .dash-container {
         width: 100%;
+    }
+    .sidebar {
+        width: 180px;
+        margin-top: 10px;
+        padding-top: 20px;
     }
 }
 

@@ -141,11 +141,15 @@ ul li ul li :hover {
 
       }
 
-    .link {
+    .links-container .link {
         color: white;
     }
     .link:hover {
         color: #3ca0e7;
+    }
+
+    .repo {
+      padding-top: 20px;
     }
 
     
