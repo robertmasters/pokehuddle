@@ -18,22 +18,26 @@ function NavigationBar() {
       }
 
     return (
-        <div className = "nav-bar-container">
+        <nav className = "nav-bar-container">
             <div className = "border-line">
                 <div className= "img-wrapper">
                     <img className ="avatar-img" src = {require('../../images/Avatars/mewtwoAvatar.png').default} alt = 'Avatar' />
                 </div>
-                <div className = "links-container">
-                    <Link className = "link" to = '' >Home</Link>
-                    <Link className = "link" to = 'research' >Research</Link>
-                    <Link className = "link" to = 'favoritepokemon' >Favorite Pokemon</Link>
-                    <Link className = "link" to = 'leaderboard' >Leaderboard</Link>
-                    <Link className = "link" to = 'articles' >Articles</Link>
-                    <Link className = "link" to = 'photos' >Photos</Link>
-                    <Link className = "link" onClick={logout} to ='/'>Logout</Link>
-                </div>
+                <ul classname="navigation-menu" role={"navigation"}>
+                    <li><span className="menu">MENU</span>
+                        <ul className = "links-container">
+                            <li><Link className = "link" to = '' >Home</Link></li>
+                            <li><Link className = "link" to = 'research' >Research</Link></li>
+                            <li><Link className = "link" to = 'favoritepokemon' >Favorites</Link></li>
+                            <li><Link className = "link" to = 'leaderboard' >Leaderboard</Link></li>
+                            <li><Link className = "link" to = 'articles' >Articles</Link></li>
+                            <li><Link className = "link" to = 'photos' >Photos</Link></li>
+                            <li><Link className = "link" onClick={logout} to ='/'>Logout</Link></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-        </div>
+        </nav>
     )
 }
 
