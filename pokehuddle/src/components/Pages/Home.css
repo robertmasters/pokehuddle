@@ -27,7 +27,7 @@ h1 {
 .note-and-pikachu-container {
     display: flex;
     flex-direction: row;
-    width: 120%;
+    width: 110%;
 }
 
 .note {
@@ -60,11 +60,68 @@ h1 {
     font-weight: bold;
 }
 .pika-container {
-    border: solid 2px black;
 }
 .pikachu-waving{
     width: 23%;
     margin: 0 auto;
     padding: 0px;
+
+}
+
+@media (max-width: 1200px) {
+    
+    .favorite-container div{
+        width: 600px;
+    }
+
+    .recent-note-container {
+        width: 600px;
+    }
+
+    .note-and-pikachu-container {
+        width: 110%;
+    }
+
+}
+@media (max-width: 1000px) {
+
+}
+
+@media (max-width: 800px) {
+    .favorite-container div{
+        width: 500px;
+    }
+
+    .recent-note-container {
+        width: 500px;
+    }
+    .note-and-pikachu-container {
+        width: 100%;
+    }
+    .favorite-container div{
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+    
+    .recent-note-container {
+        margin: 0 auto;
+        height: 350px;
+    }
+
+    .pikachu-waving{
+        border-top: solid 100px transparent;
+        width: 30%;
+        height: 30%;
+        margin: 0 auto;
+        padding: 0px;
+    
+    }
+}
+
+@media (max-width: 730px) {
+
+}
+
+@media (max-width: 570px) {
 
 }

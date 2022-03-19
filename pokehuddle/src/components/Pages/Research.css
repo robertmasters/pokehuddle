@@ -8,10 +8,6 @@
     flex-direction: "row";
 }
 
-.pokemon-search-form {
-    /* border: solid 2px #444; */
-}
-
 .search-btn {
     margin-left: 3px;
     font-size: 20px;
