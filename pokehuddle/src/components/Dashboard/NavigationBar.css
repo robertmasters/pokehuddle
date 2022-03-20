@@ -194,7 +194,9 @@ ul li ul li :hover {
 }
 
 
-@media (max-width: 570px) {
-
+@media (max-width: 600px) {
+  .nav-bar-container {
+    margin: 0 auto;
+  }
 }
 

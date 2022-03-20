@@ -130,6 +130,47 @@
     }
 }
 
-@media (max-width: 570px) {
+@media (max-width: 600px) {
+    .pokemon-search-form {
+        text-align: center;
+        width: 100%;
+    }
+    .search-btn {
+        width: 20%;
+    }
+    .search {
+        width: 40%;
+    }
+    .research-container {
+        width: 100%;
+    }
+    .pokemon-image {
+        width: 100%;
+    }
+    .pokemon-summary {
+        font-size: 15px;
+        width: 100%;
+    }
+    .underpic-metircs {
+        display: flex;
+        flex-direction: column;
+    }
+    .underpic-metircs div {
+        padding: 5px;
+    }
 
+
+}
+
+@media (max-width: 370px) {
+    .pokemon-search-form {
+        text-align: center;
+        width: 100%;
+    }
+    .search-btn {
+        width: 83%;
+    }
+    .search {
+        width: 80%;
+    }
 }

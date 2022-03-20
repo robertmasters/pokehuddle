@@ -19,6 +19,7 @@ function Home(props) {
         <div>
             <h1>Welcome {props.username}!</h1>
             <div data-testid = "home" className = "home-container">
+                <img className = "pikachu-waving-mobile" src= {require('../../images/pikawave2.png').default} alt = "pikachu waving" />
                 <div className = "favorite-container">
                     <div>
                         <img className ="favoritestextimg" src = {require('../../images/favoritestext.png').default} alt = 'favorites' />

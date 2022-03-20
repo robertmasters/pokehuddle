@@ -18,7 +18,7 @@
 
 .component-container {
     width: 100%;
-    margin-left: 20px
+    /* margin-left: 20px */
 }
 
 @media (max-width: 1200px) {
@@ -53,6 +53,17 @@
     }
 }
 
-@media (max-width: 570px) {
-
+@media (max-width: 600px) {
+    .dash-container {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .sidebar {
+        width: 100%;
+        margin-top: 0px;
+        padding-top: 20px;
+    }
+    .component-container {
+    margin-left: 0px
+}
 }

@@ -63,7 +63,7 @@ export default function Research() {
     }
 
     return (
-        <div data-testid = "research" className = "component-container">
+        <div data-testid = "research" className = "component-container research-container">
             {/*<img className ="researchtext" src = {require('../../images/Researchtext.png').default} alt = 'research title' />*/}
             <div className = "pokemon-search">
                 <form className="pokemon-search-form" onSubmit={getData} > 

@@ -195,18 +195,24 @@ input:focus-visible {
         width: 200px;
         font-size: 15px;
     }
+    .bannerimg {
+        margin-top: 10px;
+        margin: auto;
+        width: 80%;
+    }
 }
 
 @media (max-width: 570px) {
 
     .main-container{
-        width: 50%;
+        width: 100%;
         margin: 0 auto;
     }
 
     .bannerimg {
+        margin: 0 auto;
         margin-top: 10px;
-        width: 40%;
+        width: 70%;
     }
 
     .ashpikaimg {
@@ -217,5 +223,11 @@ input:focus-visible {
         width: 60%;
         font-size: 15px;
         margin: 0 auto;
+    }
+}
+
+@media (max-width: 430px) {
+    .bannerimg {
+        width: 50%;
     }
 }
