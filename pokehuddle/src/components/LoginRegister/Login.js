@@ -23,9 +23,9 @@ function Login(props) {
 
 	return (
 		<div className = 'main-container'>
-			{/*<div>Registration not yet set up, use Username: admin, Password: password <div/> 
-			<Link className = 'link' to ='/dashboard/research'>click here </Link>to enter app without loging in
-			</div>*/}
+			<div style={{width:"50%"}}>You can Register and create a new account (with a made up an email), or use Username: scarlett, Password: pika123 <div/> 
+			<Link className = 'link' to ='/dashboard/research'>click here </Link>to enter app without loging in, to see what happens!
+			</div>
 
 			<div className = 'middle-section'>
 				<div className = 'ashPikaimg-container'>
