@@ -6,6 +6,6 @@ Use this app as a personal hub for pokemon information, as well as favorite poke
 front end deployment:
 https://pokehuddle.vercel.app/
 
-Back end is being built using Spring framework and has not been deployed yet.
+Back end is being built using Spring framework.
 link to back end github repo: 
 https://github.com/robertmasters/pokehuddleSpringApp
