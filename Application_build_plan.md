@@ -7,6 +7,7 @@
 2.	pokemon Card information: https://dev.pokemontcg.io/
 
 
+## resources
 Wireframes: https://whimsical.com/pokemon-application-7tNN3rjxmqemQ67dHWQ5tn
 
 Text generator: https://textcraft.net/style/Textcraft/pokemon
