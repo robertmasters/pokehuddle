@@ -48,7 +48,7 @@ Pokemon Images: https://www.pokemon.com/us/pokedex/
 * Deploy: Vercel
 * Css, Html5
 * Js React
-* Context API Vs Reddux?
+* Reddux?
 * Testing-library, Jest, not enzyme since its not set up for react v17 yet
 * Form API: React-hook-form, testing: https://react-hook-form.com/advanced-usage#TestingForm
 
